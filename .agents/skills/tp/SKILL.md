@@ -5,7 +5,7 @@ description: "Trace a BUSFIN 8200 problem-set AI interaction with before/after G
 
 # Traceable Prompt
 
-Use this skill only after explicit invocation. Before acting, read [references/course-ai-policy.md](references/course-ai-policy.md). The authoritative source is `Problem Sets AI Policy[57].pdf` at the repository root; if it differs from the summary, follow the source and the stricter interpretation.
+Use this skill only after explicit invocation. Before acting, read [references/course-ai-policy.md](references/course-ai-policy.md). The authoritative source is `materials/Problem Sets AI Policy[57].pdf`; if it differs from the summary, follow the source and the stricter interpretation.
 
 ## Preflight
 

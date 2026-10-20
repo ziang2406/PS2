@@ -1,6 +1,6 @@
 # BUSFIN 8200 problem-set AI policy: operational summary
 
-The authoritative source is `Problem Sets AI Policy[57].pdf` in the repository root. This summary does not replace it; follow the source and the stricter interpretation if there is uncertainty.
+The authoritative source is `materials/Problem Sets AI Policy[57].pdf`. This summary does not replace it; follow the source and the stricter interpretation if there is uncertainty.
 
 ## Substantive work and audit trail
 
