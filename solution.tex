@@ -23,18 +23,35 @@
 \maketitle
 
 \section*{Question 1}
-\subsection*{1 (a)}
-
-\subsection*{1 (b)}
-
-\subsection*{1 (c)}
-
-\subsection*{1 (d)}
-
-\subsection*{1 (e)}
 
 \section*{Question 2}
 \subsection*{2 (a)}
+Using the normalization $\mathbb{E}[M^*] = 1$, we find the stochastic discount factor $M_t^* = a - b'xR_t$ 
+that satisfies $\mathbb{\hat{E}}[M^* \cdot xR] = 0$. In particular, we have:
+\begin{align*}
+    0 
+    &= \mathbb{{E}}[M^* \cdot xR] \\
+    &= \underbrace{\mathbb{{E}}[M^*]}_{\displaystyle = 1} \cdot \mathbb{E}[xR] + \text{Cov}(M^*, xR) \\
+    &= \mathbb{E}[xR] - b'\text{Cov}(xR, xR) \\
+    &\implies \mathbb{E}[xR] = b'\Sigma \\
+    &\implies b = \Sigma^{-1}\mathbb{E}[xR] 
+\end{align*}
+
+$xR$ is a Tx10 vector of excess returns with T = 1,202 months in the sample from July 1926 to August 2026. Verifying that $\Sigma$ is invertible,
+we find that:
+\begin{align*}
+    1 
+    &= \mathbb{{E}}[M^*] \\
+    &= \mathbb{E}[a - b'xR] \\
+    &= a - b'\mathbb{E}[xR] \\
+    &\implies a = 1 + b'\mathbb{E}[xR] \\
+\end{align*}
+Therefore, we are able to compute the stochastic discount factor $M_t^* = a - b'xR_t$ for each month in the sample and obtain the following scatterplot:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/2a.png}
+    \label{fig:q2a}
+\end{figure}
 
 \subsection*{2 (b)}
 
