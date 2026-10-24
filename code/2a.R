@@ -6,6 +6,9 @@ be_me_path <- file.path("data", "BE_ME.csv")
 rf_path <- file.path("data", "RF.csv")
 figure_path <- file.path("figures", "2a.png")
 
+sample_start <- 192707L
+sample_end <- 202608L
+
 read_csv_section <- function(path, header_index, row_pattern = "^\\s*[0-9]{6},") {
   lines <- readLines(path, warn = FALSE)
   data_indices <- seq.int(header_index + 1L, length(lines))
@@ -64,8 +67,14 @@ if (!all(c("YYYYMM", "RF") %in% names(rf))) {
   stop("RF.csv is missing YYYYMM or RF.")
 }
 
-be_me <- be_me[be_me$YYYYMM >= 192607L, required_be_me]
-rf <- rf[rf$YYYYMM >= 192607L, c("YYYYMM", "RF")]
+be_me <- be_me[
+  be_me$YYYYMM >= sample_start & be_me$YYYYMM <= sample_end,
+  required_be_me
+]
+rf <- rf[
+  rf$YYYYMM >= sample_start & rf$YYYYMM <= sample_end,
+  c("YYYYMM", "RF")
+]
 names(be_me)[-1L] <- decile_names
 
 if (anyDuplicated(be_me$YYYYMM) || anyDuplicated(rf$YYYYMM)) {
@@ -75,6 +84,20 @@ if (anyDuplicated(be_me$YYYYMM) || anyDuplicated(rf$YYYYMM)) {
 analysis_data <- merge(be_me, rf, by = "YYYYMM", all = FALSE, sort = TRUE)
 if (nrow(analysis_data) == 0L) {
   stop("No common YYYYMM observations found between BE_ME.csv and RF.csv.")
+}
+if (min(analysis_data$YYYYMM) != sample_start ||
+    max(analysis_data$YYYYMM) != sample_end) {
+  stop("The merged data do not span the requested 192707--202608 sample.")
+}
+
+sample_dates <- as.Date(paste0(analysis_data$YYYYMM, "01"), format = "%Y%m%d")
+expected_dates <- seq.Date(
+  as.Date("1927-07-01"),
+  as.Date("2026-08-01"),
+  by = "month"
+)
+if (!identical(sample_dates, expected_dates)) {
+  stop("The merged sample has one or more missing months.")
 }
 
 raw_returns <- as.matrix(analysis_data[, decile_names, drop = FALSE])

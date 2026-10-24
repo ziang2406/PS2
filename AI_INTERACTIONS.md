@@ -119,3 +119,28 @@ This file is an append-only record maintained by the project-local `$tp` skill f
 - **Type of assistance:** empirical implementation.
 - **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
 
+## TP interaction `2a-c7e2e4a` — `2026-10-24 14:15:10 -0400`
+
+- **Problem set item:** `2a`
+- **Substantive prompt (verbatim):**
+
+  ```text
+  Update the sample period to July 1927 to August 2026
+  ```
+
+- **Clarification (verbatim):**
+
+  ```text
+  I've updated all four prompts
+  ```
+
+- **Purpose:** Apply the student-authored July 1927--August 2026 sample restriction to item 2a and regenerate its estimates and coefficient figure.
+- **Git commit before interaction:** `c7e2e4a60164c94e097fe56b05abd02e56660dc2`
+- **Assistance provided:** Verified that the later student-authored sample instruction in `prompt/2a.md` supersedes the earlier date stated in its assignment text. Updated `code/2a.R` to define explicit `192707` and `202608` endpoints, restrict both BE/ME and risk-free data to those endpoints, verify that the merged sample begins and ends on the requested months, and stop if any monthly gap is present. Reran the script successfully on 1190 months, verified that `Sigma` retained rank 10, regenerated `figures/2a.png`, and visually inspected the figure. The revised estimate was `a = 1.0368028712`, `mean(M*) = 1`, and the largest absolute pricing moment was approximately 9.08e-06. The IDE automatically rebuilt `solution.pdf` because `solution.tex` includes the updated 2a figure.
+- **Files inspected:** `.agents/skills/tp/SKILL.md`; `.agents/skills/tp/references/course-ai-policy.md`; `AI_INTERACTIONS.md`; `prompt/2a.md`; `prompt/2b.md`; `prompt/2c.md`; `prompt/2d.md`; `code/2a.R`; `data/BE_ME.csv`; `data/RF.csv`; `figures/2a.png`; `solution.tex`; `solution.pdf`.
+- **Files directly modified:** `code/2a.R`; `figures/2a.png`; `AI_INTERACTIONS.md`. `solution.pdf` was modified indirectly by the IDE's automatic LaTeX rebuild.
+- **Errors, omissions, or ambiguities identified:** The initial request did not identify whether the date change applied to one item or multiple items. The student clarified that it applies to 2a through 2d and updated all four prompt files. In `prompt/2a.md`, the later student-authored July 1927--August 2026 instruction supersedes the earlier July 1926 wording. No missing months, selected missing/sentinel observations, or covariance singularity occurred.
+- **Substantive mathematical, economic, or empirical suggestions:** None. The revised sample endpoints were supplied by the student; endpoint filtering, gap validation, rerunning, and rendering were mechanical implementation choices.
+- **Type of assistance:** empirical implementation.
+- **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
+
