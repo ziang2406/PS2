@@ -1,13 +1,13 @@
 # BUSFIN 8200 Problem Set 2, Question 2d
 # Evaluate the BE/ME, momentum, and combined linear SDFs against all twenty
-# test portfolios using the common January 1927--August 2026 sample.
+# test portfolios using the common July 1927--August 2026 sample.
 
 be_me_path <- file.path("data", "BE_ME.csv")
 momentum_path <- file.path("data", "10P_MOM.csv")
 rf_path <- file.path("data", "RF.csv")
 table_path <- file.path("figures", "2d.tex")
 
-sample_start <- 192701L
+sample_start <- 192707L
 sample_end <- 202608L
 
 read_csv_section <- function(path, header_index, row_pattern = "^\\s*[0-9]{6},") {
@@ -150,12 +150,12 @@ common_data <- Reduce(
 
 if (nrow(common_data) == 0L || min(common_data$YYYYMM) != sample_start ||
     max(common_data$YYYYMM) != sample_end) {
-  stop("The merged data do not span the requested 192701--202608 sample.")
+  stop("The merged data do not span the requested 192707--202608 sample.")
 }
 
 sample_dates <- as.Date(paste0(common_data$YYYYMM, "01"), format = "%Y%m%d")
 expected_dates <- seq.Date(
-  as.Date("1927-01-01"),
+  as.Date("1927-07-01"),
   as.Date("2026-08-01"),
   by = "month"
 )

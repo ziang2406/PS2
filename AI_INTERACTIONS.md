@@ -194,3 +194,28 @@ This file is an append-only record maintained by the project-local `$tp` skill f
 - **Type of assistance:** empirical implementation.
 - **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
 
+## TP interaction `2d-2604b53` — `2026-10-24 14:17:21 -0400`
+
+- **Problem set item:** `2d`
+- **Substantive prompt (verbatim):**
+
+  ```text
+  Update the sample period to July 1927 to August 2026
+  ```
+
+- **Clarification (verbatim):**
+
+  ```text
+  I've updated all four prompts
+  ```
+
+- **Purpose:** Apply the student-authored July 1927--August 2026 common sample to the three 2d SDF estimates and recompute the complete 20-portfolio by 3-SDF pricing-error table.
+- **Git commit before interaction:** `2604b5339d624edb4a050320aeb967f70d5e9708`
+- **Assistance provided:** Updated `code/2d.R` to change the documented and executable common-sample start from January 1927 to July 1927, update the endpoint validation message, and require the gap-free date sequence to begin in July 1927. Reran the script successfully on 1190 common months, verified covariance ranks of 10, 10, and 20, recomputed every SDF covariance and pricing error using the specified denominator `T`, regenerated `figures/2d.tex`, and compiled the refreshed LaTeX table successfully in a temporary test document.
+- **Files inspected:** `.agents/skills/tp/SKILL.md`; `.agents/skills/tp/references/course-ai-policy.md`; `AI_INTERACTIONS.md`; `prompt/2d.md`; `code/2d.R`; `data/BE_ME.csv`; `data/10P_MOM.csv`; `data/RF.csv`; `figures/2d.tex`.
+- **Files directly modified:** `code/2d.R`; `figures/2d.tex`; `AI_INTERACTIONS.md`.
+- **Errors, omissions, or ambiguities identified:** None unresolved. The update in `prompt/2d.md` explicitly supplies the July 1927--August 2026 endpoints. No missing months, selected missing/sentinel observations, or covariance singularity occurred.
+- **Substantive mathematical, economic, or empirical suggestions:** None. The revised common-sample endpoints were supplied by the student; filtering, gap validation, recomputation, and table rendering were mechanical implementation choices.
+- **Type of assistance:** empirical implementation.
+- **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
+
