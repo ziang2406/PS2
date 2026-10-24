@@ -94,3 +94,28 @@ This file is an append-only record maintained by the project-local `$tp` skill f
 - **Type of assistance:** empirical implementation; formatting/translation.
 - **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
 
+## TP interaction `2d-d54947c` — `2026-10-24 12:09:52 -0400`
+
+- **Problem set item:** `2d`
+- **Substantive prompt (verbatim):**
+
+  ```text
+  follow my instructions in prompt/2d.md
+  ```
+
+- **Clarification (verbatim):**
+
+  ```text
+  I've updated my prompt
+  ```
+
+- **Purpose:** Implement the student-authored 2d design to re-estimate the BE/ME, momentum, and combined SDFs on the common sample; evaluate every SDF against all 20 portfolios using the specified `1/T` covariance estimator; calculate the pricing errors; and produce the complete 20-row by 3-case LaTeX table.
+- **Git commit before interaction:** `d54947cdb09606e6064659dbd8ffca8c3a83220b`
+- **Assistance provided:** Reviewed the initial specification and identified that the testing universe for each SDF was ambiguous. Paused for a student decision and resumed after `prompt/2d.md` was updated to require all three SDFs to be evaluated against all 20 portfolios. Implemented standalone `code/2d.R` in base R to extract the value-weighted monthly BE/ME and momentum panels and monthly risk-free rate; validate and merge the gap-free January 1927--August 2026 common sample; form the 20 excess-return series; re-estimate the 10-asset BE/ME SDF, 10-asset momentum SDF, and 20-asset combined SDF; verify covariance ranks of 10, 10, and 20; compute each SDF's covariance with every test portfolio using the prompt's denominator `T`; calculate each alpha as the sample mean excess return plus that covariance; and write the complete results to `figures/2d.tex`. Ran the script successfully and compiled the generated LaTeX table in a temporary test document.
+- **Files inspected:** `.agents/skills/tp/SKILL.md`; `.agents/skills/tp/references/course-ai-policy.md`; `AI_INTERACTIONS.md`; `prompt/2d.md`; `data/BE_ME.csv`; `data/10P_MOM.csv`; `data/RF.csv`; `code/2d.R`; `figures/2d.tex`.
+- **Files directly modified:** `code/2d.R`; `figures/2d.tex`; `AI_INTERACTIONS.md`.
+- **Errors, omissions, or ambiguities identified:** The initial prompt did not state whether each SDF should be tested against all 20 portfolios or only its own estimation assets. The student resolved this by requiring every SDF to be evaluated against all 20 portfolios. No selected missing/sentinel observations or missing months were encountered, and all three covariance matrices were nonsingular. The script stops rather than choosing a treatment if those validation conditions fail.
+- **Substantive mathematical, economic, or empirical suggestions:** None. The sample, portfolio sets, SDF estimators, covariance denominator, pricing-error formula, testing universe, and table design were supplied by the student. Data validation, base-R organization, object names, six-decimal table formatting, and the conventional `code/2d.R` filename were mechanical implementation choices.
+- **Type of assistance:** empirical implementation.
+- **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
+
