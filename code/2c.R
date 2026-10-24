@@ -215,7 +215,7 @@ points(seq_len(10L), b_2c[11:20], pch = 19, col = "red")
 axis(1L, at = seq_len(10L), labels = seq_len(10L))
 abline(h = 0, col = "gray70", lty = 2L)
 legend(
-  "topright",
+  "topleft",
   legend = c("BE/ME", "Momentum"),
   col = c("blue", "red"),
   pch = 19,

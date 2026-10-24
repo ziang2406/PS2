@@ -67,6 +67,34 @@ The correlation between the recovered $M_t^*$ is 0.3579, which suggests that the
 necessarily price the other one as the decile portfolios are sorted using different signals. 
 
 \subsection*{2 (c)}
+Following the same procedure as in part (a), we find the respective b coefficients of the
+stochastic discount factor that prices the excess returns of the 20 portfolios in the $SMB$ \& $MOM$ datasets as follows:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/2c.png}
+    \label{fig:q2c}
+\end{figure}
+
+Using a common sample of 1,196 months from January 1927 to August 2026, we estimated
+the Sharpe ratios of $xR_t^*$ as follows: 
+\begin{table}[H]
+  \centering
+  \caption{Monthly Sharpe Ratios of the $xR^*$ Portfolios}
+  \label{tab:2c-sharpe-ratios}
+  \begin{tabular}{lr}
+    \toprule
+    Portfolio set & Monthly Sharpe ratio \\
+    \midrule
+    BE/ME (10 portfolios) & 0.192030 \\
+    Momentum (10 portfolios) & 0.260270 \\
+    Combined (20 portfolios) & 0.306976 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+A key property of the SDF under no arbitrage is that $xR_t^*$ is the maximum Sharpe ratio portfolio. 
+Since we observed that the Sharpe ratio of the combined 20 portfolios is higher than the Sharpe ratios of the individual 10 portfolios, 
+adding more non-redundant assets to the portfolio universe provides a more diversified portfolio with better risk-adjusted returns. 
 
 \subsection*{2 (d)}
 
