@@ -63,19 +63,19 @@ the 10 portfolios in the $MOM$ dataset as follows:
 \end{figure}
 
 Similar to part (a), we do not observe any clear pattern between the b coefficients and the decile portfolios' excess returns. 
-The correlation between the recovered $M_t^*$ is 0.3579, which suggests that the SDF that prices a particular portfolio does not
+The correlation between the recovered $M_t^*$ is 0.3555, which suggests that the SDF that prices a particular portfolio does not
 necessarily price the other one as the decile portfolios are sorted using different signals. 
 
 \subsection*{2 (c)}
 Following the same procedure as in part (a), we find the respective b coefficients of the
-stochastic discount factor that prices the excess returns of the 20 portfolios in the $SMB$ \& $MOM$ datasets as follows:
+stochastic discount factor that prices the excess returns of the 20 portfolios in the $BM$ \& $MOM$ datasets as follows:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/2c.png}
     \label{fig:q2c}
 \end{figure}
 
-Using a common sample of 1,196 months from January 1927 to August 2026, we estimated
+Using a common sample of 1,196 months from July 1927 to August 2026, we estimated
 the Sharpe ratios of $xR_t^*$ as follows: 
 \begin{table}[H]
   \centering
@@ -85,18 +85,64 @@ the Sharpe ratios of $xR_t^*$ as follows:
     \toprule
     Portfolio set & Monthly Sharpe ratio \\
     \midrule
-    BE/ME (10 portfolios) & 0.192030 \\
-    Momentum (10 portfolios) & 0.260270 \\
-    Combined (20 portfolios) & 0.306976 \\
+    BE/ME (10 portfolios) & 0.191841 \\
+    Momentum (10 portfolios) & 0.257990 \\
+    Combined (20 portfolios) & 0.304398 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 A key property of the SDF under no arbitrage is that $xR_t^*$ is the maximum Sharpe ratio portfolio. 
 Since we observed that the Sharpe ratio of the combined 20 portfolios is higher than the Sharpe ratios of the individual 10 portfolios, 
-adding more non-redundant assets to the portfolio universe provides a more diversified portfolio with better risk-adjusted returns. 
+adding more non-redundant assets to the portfolio universe provides a more diversified portfolio with better risk-adjusted returns and higher volatility, which
+is consistent with the theory of SDF and maximum Sharpe ratio portfolios.
 
 \subsection*{2 (d)}
+Having estimated the SDFs $M_t^* = \hat{a} - \hat{b}'xR_t$ from part (a),(b), and (c) and normalizing $\mathbb{E}[M^*]=1$, we estimate the pricing errors for each decile portfolio p as follows: 
+\[
+\hat{\alpha}_p
+=
+\widehat{\mathbb{E}}[xR_p]
++
+\widehat{\operatorname{Cov}}(M^*, xR_p).
+\]
+
+\begin{table}[H]
+  \centering
+  \caption{Pricing Errors Under the Three Estimated SDFs}
+  \label{tab:2d-pricing-errors}
+  \begin{tabular}{lrrr}
+    \toprule
+    Portfolio & BE/ME SDF & Momentum SDF & Combined SDF \\
+    \midrule
+    BE/ME D1 & 0.000005 & -0.001505 & 0.000005 \\
+    BE/ME D2 & 0.000006 & -0.000095 & 0.000006 \\
+    BE/ME D3 & 0.000006 & -0.000217 & 0.000006 \\
+    BE/ME D4 & 0.000006 & -0.000772 & 0.000006 \\
+    BE/ME D5 & 0.000006 & 0.000509 & 0.000006 \\
+    BE/ME D6 & 0.000007 & 0.001267 & 0.000007 \\
+    BE/ME D7 & 0.000006 & 0.000287 & 0.000006 \\
+    BE/ME D8 & 0.000008 & 0.002382 & 0.000008 \\
+    BE/ME D9 & 0.000009 & 0.003456 & 0.000009 \\
+    BE/ME D10 & 0.000009 & 0.003204 & 0.000009 \\
+    Momentum D1 & -0.010147 & 0.000001 & 0.000001 \\
+    Momentum D2 & -0.005043 & 0.000004 & 0.000004 \\
+    Momentum D3 & -0.003265 & 0.000004 & 0.000004 \\
+    Momentum D4 & -0.001482 & 0.000005 & 0.000005 \\
+    Momentum D5 & -0.000875 & 0.000006 & 0.000006 \\
+    Momentum D6 & -0.000257 & 0.000006 & 0.000006 \\
+    Momentum D7 & 0.000515 & 0.000006 & 0.000006 \\
+    Momentum D8 & 0.001908 & 0.000007 & 0.000007 \\
+    Momentum D9 & 0.002246 & 0.000008 & 0.000008 \\
+    Momentum D10 & 0.005424 & 0.000010 & 0.000010 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+We observe that the SDF constructed using the BE/ME portfolios prices the BE/ME portfolios well with small pricing errors, 
+but not the MOM portfolios, and vice versa. The SDF based on the combined 20 portfolios prices 
+all 20 portfolios well, which is consistent with the notion that the selection of the asset universe
+matters in the pricing power of the SDF. 
 
 \subsection*{2 (e)}
 
