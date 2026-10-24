@@ -187,6 +187,53 @@ combined SDF, which suggests the possibility of time-varying $a$ and $b$ coeffic
 
 \section*{Question 3}
 \subsection*{3 (a)}
+Consider a representative investor with wealth $W_t$ in a two-period economy. Let
+$R_{f,t}$ be a baseline asset. We solve the following optimization problem:
+\begin{align*}
+    \mathbf{w}_t^*
+    &= \arg\max_{\mathbf{w}_t} \mathbb{E}_t\!\left[U(W_{t+1})\right], \\
+    \text{s.t.}\quad
+    W_{t+1}
+    &= W_t R_{m,t+1}
+     = W_t\left(R_{f,t+1}+\mathbf{w}_t' xR_{t+1}\right),
+\end{align*}
+where $xR_{t+1}$ is the vector of asset excess returns relative to $R_{f,t}$.
+
+Using the power utility function
+\[
+    U(W)=\frac{W^{1-\gamma}}{1-\gamma},
+\]
+where $\gamma$ is CRRA, we rewrite the problem as
+\[
+    \mathbf{w}_t^*
+    = \arg\max_{\mathbf{w}_t}
+      \mathbb{E}_t\!\left[
+        \frac{
+          \left(W_t\left(R_{f,t+1}+\mathbf{w}_t' xR_{t+1}\right)\right)^{1-\gamma}
+        }{1-\gamma}
+      \right].
+\]
+
+Thus, the first-order condition of the maximization problem is
+\begin{align*}
+    \mathbb{E}_t\!\left[
+      \frac{
+        (1-\gamma)W_t
+        \left(R_{f,t+1}+\mathbf{w}_t' xR_{t+1}\right)^{-\gamma}
+        xR_{t+1}
+      }{1-\gamma}
+    \right] &= 0 \\
+    \implies
+    \mathbb{E}_t\!\left[
+      \left(R_{f,t+1}+\mathbf{w}_t' xR_{t+1}\right)^{-\gamma}
+      xR_{t+1}
+    \right] &= 0 \\
+    \implies
+    \mathbb{E}_t\!\left[
+      R_{m,t+1}^{-\gamma}xR_{t+1}
+    \right] &= 0.
+\end{align*}
+As a result, the SDF $M_t=R_{m,t+1}^{-\gamma}$ prices the vector of excess returns.
 
 \subsection*{3 (b)}
 
