@@ -201,17 +201,18 @@ sharpe_table <- data.frame(
 dir.create(dirname(figure_path), recursive = TRUE, showWarnings = FALSE)
 png(filename = figure_path, width = 1200, height = 800, res = 150)
 plot(
-  seq_along(b_2c),
-  b_2c,
+  seq_len(10L),
+  b_2c[seq_len(10L)],
   type = "n",
   xaxt = "n",
-  xlab = "Portfolio",
+  ylim = range(b_2c),
+  xlab = "Portfolio decile",
   ylab = expression(b[p]),
   main = "SDF coefficients across BE/ME and momentum portfolios"
 )
 points(seq_len(10L), b_2c[seq_len(10L)], pch = 19, col = "blue")
-points(11:20, b_2c[11:20], pch = 19, col = "red")
-axis(1L, at = seq_along(b_2c), labels = seq_along(b_2c))
+points(seq_len(10L), b_2c[11:20], pch = 19, col = "red")
+axis(1L, at = seq_len(10L), labels = seq_len(10L))
 abline(h = 0, col = "gray70", lty = 2L)
 legend(
   "topright",
