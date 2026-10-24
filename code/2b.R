@@ -7,6 +7,9 @@ momentum_path <- file.path("data", "10P_MOM.csv")
 rf_path <- file.path("data", "RF.csv")
 figure_path <- file.path("figures", "2b.png")
 
+sample_start <- 192707L
+sample_end <- 202608L
+
 read_csv_section <- function(path, header_index, row_pattern = "^\\s*[0-9]{6},") {
   lines <- readLines(path, warn = FALSE)
   data_indices <- seq.int(header_index + 1L, length(lines))
@@ -57,6 +60,7 @@ estimate_linear_sdf <- function(
     source_columns,
     rf_data,
     start_yyyymm,
+    end_yyyymm,
     label) {
   decile_names <- paste0("D", seq_len(10L))
   required_portfolio_columns <- c("YYYYMM", source_columns)
@@ -69,10 +73,14 @@ estimate_linear_sdf <- function(
   }
 
   portfolio_data <- portfolio_data[
-    portfolio_data$YYYYMM >= start_yyyymm,
+    portfolio_data$YYYYMM >= start_yyyymm &
+      portfolio_data$YYYYMM <= end_yyyymm,
     required_portfolio_columns
   ]
-  rf_data <- rf_data[rf_data$YYYYMM >= start_yyyymm, c("YYYYMM", "RF")]
+  rf_data <- rf_data[
+    rf_data$YYYYMM >= start_yyyymm & rf_data$YYYYMM <= end_yyyymm,
+    c("YYYYMM", "RF")
+  ]
   names(portfolio_data)[-1L] <- decile_names
 
   if (anyDuplicated(portfolio_data$YYYYMM) || anyDuplicated(rf_data$YYYYMM)) {
@@ -88,6 +96,17 @@ estimate_linear_sdf <- function(
   )
   if (nrow(analysis_data) == 0L) {
     stop("No common YYYYMM observations found for the ", label, " analysis.")
+  }
+  if (min(analysis_data$YYYYMM) != start_yyyymm ||
+      max(analysis_data$YYYYMM) != end_yyyymm) {
+    stop("The ", label, " data do not span the requested sample endpoints.")
+  }
+
+  sample_dates <- as.Date(paste0(analysis_data$YYYYMM, "01"), format = "%Y%m%d")
+  start_date <- as.Date(paste0(start_yyyymm, "01"), format = "%Y%m%d")
+  end_date <- as.Date(paste0(end_yyyymm, "01"), format = "%Y%m%d")
+  if (!identical(sample_dates, seq.Date(start_date, end_date, by = "month"))) {
+    stop("The ", label, " sample has one or more missing months.")
   }
 
   raw_returns <- as.matrix(analysis_data[, decile_names, drop = FALSE])
@@ -159,14 +178,16 @@ sdf_2a <- estimate_linear_sdf(
   be_me,
   be_me_columns,
   rf,
-  start_yyyymm = 192607L,
+  start_yyyymm = sample_start,
+  end_yyyymm = sample_end,
   label = "BE/ME"
 )
 sdf_2b <- estimate_linear_sdf(
   momentum,
   momentum_columns,
   rf,
-  start_yyyymm = 192607L,
+  start_yyyymm = sample_start,
+  end_yyyymm = sample_end,
   label = "momentum"
 )
 
