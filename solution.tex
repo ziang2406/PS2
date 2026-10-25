@@ -236,6 +236,39 @@ Thus, the first-order condition of the maximization problem is
 As a result, the SDF $M_t=R_{m,t+1}^{-\gamma}$ prices the vector of excess returns.
 
 \subsection*{3 (b)}
+The moment function is given by $\epsilon(\gamma) = R_{w,t+1}^{-\gamma} \cdot xR_{t+1}$. 
+Its sample estimator is $g_{T}(\gamma) = \frac{1}{T}\sum_{t=1}^{T} \epsilon(\gamma)$.
+Since there is 1 moment condition and 1 parameter, the GMM estimator $\hat{\gamma}$ is obtained by solving
+the minimization problem $\hat{\gamma} = \arg\min_{\gamma} g_{T}(\gamma)'g_{T}(\gamma)$, where $W = I$.
+Using the same sample of 1,129 months from December 1927 to December 2021, we obtain the following GMM estimate of risk aversion:
+
+\begin{table}[H]
+  \centering
+  \caption{Single-moment GMM Estimate of Risk Aversion}
+  \label{tab:3b-gmm}
+
+  \begin{minipage}{0.75\textwidth}
+    \centering
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr@{}}
+      \toprule
+      Statistic & Value \\
+      \midrule
+      $\hat{\gamma}$ & 1.9061 \\
+      Newey--West standard error & 0.6026 \\
+      $t$-statistic & 3.1630 \\
+      $\hat{G}$ & $-0.0480$ \\
+      $\hat{S}^{\mathrm{HAC}}$ & 0.9439 \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright
+      \textit{Note:} The Newey--West bandwidth is 25.5583.
+      Ceiling rounding gives pilot truncation $m=7$ and
+      $L=26$ Bartlett lags. Prewhitening is not used.
+      \par}
+  \end{minipage}
+\end{table}
 
 \subsection*{3 (c)}
 
