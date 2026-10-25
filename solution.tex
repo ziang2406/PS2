@@ -379,6 +379,46 @@ Thus, the estimated SDF is consistent in pricing both the market and managed por
 \end{table}
 
 \subsection*{3 (e)}
+\begin{table}[H]
+  \centering
+  \caption{Two-Step GMM with Market and Managed-Portfolio Moments}
+  \label{tab:3e-gmm}
+
+  \begin{minipage}{0.9\textwidth}
+    \centering
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+      \toprule
+      \multicolumn{4}{@{}l}{\textbf{Panel A: Parameter and Pricing Errors}} \\
+      \addlinespace
+      Parameter / Moment & Estimate & NW SE & $t$-statistic \\
+      \midrule
+      $\hat{\gamma}_2$ & 2.9508 & 0.7106 & --- \\
+      Market pricing error & $-0.0020$ & --- & $-0.8078$ \\
+      Managed pricing error & 0.0055 & --- & 0.8078 \\
+      \midrule
+      \multicolumn{4}{@{}l}{\textbf{Panel B: Joint Wald Test}} \\
+      \addlinespace
+      Null hypothesis & Wald statistic & df & $p$-value \\
+      \midrule
+      $\alpha_{\mathrm{market}}=\alpha_{\mathrm{managed}}=0$
+        & 0.6525 & 1 & 0.4192 \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright
+      \textit{Note:} The sample covers December 1940--December 2021
+      ($T=973$). NW SE denotes the Newey--West standard error.
+      Dashes indicate statistics not supplied.
+      The joint test uses the pseudoinverse of the pricing-error
+      covariance matrix, which has numerical rank one.
+      Stage-one and stage-two Bartlett bandwidths are 23.3785
+      and 23.4192, respectively, giving $L_1=L_2=24$ after
+      ceiling rounding. Lag-$\ell$ autocovariances use denominator
+      $T-\ell$; prewhitening is not used.
+      \par}
+  \end{minipage}
+\end{table}
 
 \section*{Question 4}
 \subsection*{4 (a)}
