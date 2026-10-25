@@ -3,7 +3,7 @@
 "Sample moment at gamma estimate","0.0000"
 "GMM objective","0.0000"
 "Newey-West standard error","0.6026"
-"t-statistic","3.1630"
+"Gamma t-statistic","3.1630"
 "G estimate","-0.0480"
 "S HAC estimate","0.9439"
 "Number of observations","1129"
