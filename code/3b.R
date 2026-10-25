@@ -10,10 +10,6 @@ sample_end <- 202112L
 gamma_bounds <- c(-10, 10)
 digits_to_report <- 4L
 
-if (!requireNamespace("sandwich", quietly = TRUE)) {
-  stop("Package 'sandwich' is required for bwNeweyWest().")
-}
-
 data <- read.csv(data_path, check.names = FALSE, stringsAsFactors = FALSE)
 required_columns <- c("YEAR", "MONTH", "rf", "re")
 missing_columns <- setdiff(required_columns, names(data))
@@ -74,6 +70,34 @@ gmm_objective <- function(gamma) {
   sample_moment(gamma)^2
 }
 
+# Bartlett bwNeweyWest bandwidth selection with the prompt's revised ceiling
+# rule for the pilot truncation. All other selector settings match the
+# no-prewhitening scalar-moment case.
+bw_newey_west_ceiling <- function(u) {
+  n <- length(u)
+  pilot_lag <- ceiling(4 * (n / 100)^(2 / 9))
+
+  pilot_autocovariance <- function(lag) {
+    sum(u[seq_len(n - lag)] * u[(lag + 1L):n]) / n
+  }
+
+  pilot_covariances <- vapply(
+    0:pilot_lag,
+    pilot_autocovariance,
+    numeric(1L)
+  )
+  s0 <- pilot_covariances[1L] + 2 * sum(pilot_covariances[-1L])
+  pilot_lags <- seq_len(pilot_lag)
+  s1 <- 2 * sum(pilot_lags * pilot_covariances[-1L])
+  optimal_constant <- 1.1447 * ((s1 / s0)^2)^(1 / 3)
+
+  list(
+    bandwidth = optimal_constant * n^(1 / 3),
+    pilot_lag = pilot_lag,
+    optimal_constant = optimal_constant
+  )
+}
+
 optimization <- optimize(
   f = gmm_objective,
   interval = gamma_bounds,
@@ -90,17 +114,15 @@ G_hat <- mean(-selected$re * exp(-gamma_hat * selected$re) * xRw)
 e_hat <- moment_values(gamma_hat)
 u_hat <- e_hat - mean(e_hat)
 
-# bwNeweyWest returns a real-valued bandwidth. The corresponding Newey-West
-# lag convention is its integer floor.
-bandwidth_hat <- sandwich::bwNeweyWest(
-  matrix(u_hat, ncol = 1L),
-  kernel = "Bartlett",
-  prewhite = FALSE
-)
-L <- floor(bandwidth_hat)
+# Apply the revised ceiling rule to both the pilot truncation and final lag.
+bandwidth_selection <- bw_newey_west_ceiling(u_hat)
+bandwidth_hat <- bandwidth_selection$bandwidth
+pilot_lag <- bandwidth_selection$pilot_lag
+L <- ceiling(bandwidth_hat)
 
 autocovariance <- function(lag) {
-  sum(u_hat[(lag + 1L):T_obs] * u_hat[seq_len(T_obs - lag)]) / T_obs
+  sum(u_hat[(lag + 1L):T_obs] * u_hat[seq_len(T_obs - lag)]) /
+    (T_obs - lag)
 }
 
 Gamma_0 <- autocovariance(0L)
@@ -175,8 +197,9 @@ latex_lines <- c(
   "    \\bottomrule",
   "  \\end{tabular}",
   sprintf(
-    "  \\footnotesize{Note: The Newey--West bandwidth is %.4f; its integer floor gives $L=%d$ Bartlett lags. Prewhitening is not used.}",
+    "  \\footnotesize{Note: The Newey--West bandwidth is %.4f; ceiling rounding gives pilot truncation %d and $L=%d$ Bartlett lags. Prewhitening is not used.}",
     bandwidth_hat,
+    pilot_lag,
     L
   ),
   "\\end{table}"
@@ -191,6 +214,7 @@ cat("sample moment:", format(moment_hat, digits = 12L), "\n")
 cat("objective:", format(objective_hat, digits = 12L), "\n")
 cat("G_hat:", format(G_hat, digits = 12L), "\n")
 cat("Newey-West bandwidth:", format(bandwidth_hat, digits = 12L), "\n")
+cat("Newey-West pilot truncation:", pilot_lag, "\n")
 cat("Newey-West lags:", L, "\n")
 cat("S_HAC_hat:", format(S_HAC_hat, digits = 12L), "\n")
 cat("se_gamma_hat:", format(se_gamma_hat, digits = 12L), "\n")
