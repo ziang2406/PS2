@@ -277,6 +277,7 @@ avar_gamma_hat_2 <- as.numeric(
     G_W_G_inverse / T_obs
 )
 se_gamma_hat_2 <- sqrt(avar_gamma_hat_2)
+t_gamma_hat_2 <- gamma_hat_2 / se_gamma_hat_2
 
 K_2 <- diag(2L) -
   G_hat_2 %*% (G_W_G_inverse * t(G_hat_2) %*% W_2)
@@ -328,6 +329,7 @@ summary_table <- data.frame(
   Statistic = c(
     "Second-stage gamma estimate",
     "Newey-West standard error",
+    "Second-stage gamma t-statistic",
     "Market pricing error",
     "Market pricing-error t-statistic",
     "Managed pricing error",
@@ -351,6 +353,7 @@ summary_table <- data.frame(
   Value = c(
     sprintf("%.4f", gamma_hat_2),
     sprintf("%.4f", se_gamma_hat_2),
+    sprintf("%.4f", t_gamma_hat_2),
     sprintf("%.4f", alpha_hat_2["market"]),
     sprintf("%.4f", t_alpha_hat_2["market"]),
     sprintf("%.4f", alpha_hat_2["managed"]),
@@ -389,6 +392,7 @@ latex_lines <- c(
   "    \\midrule",
   sprintf("    $\\hat{\\gamma}_2$ & %.4f \\\\" , gamma_hat_2),
   sprintf("    Newey--West standard error & %.4f \\\\" , se_gamma_hat_2),
+  sprintf("    $\\hat{\\gamma}_2$ $t$-statistic & %.4f \\\\" , t_gamma_hat_2),
   sprintf("    Market pricing error & %.4f \\\\" , alpha_hat_2["market"]),
   sprintf("    Market pricing-error $t$-statistic & %.4f \\\\" , t_alpha_hat_2["market"]),
   sprintf("    Managed pricing error & %.4f \\\\" , alpha_hat_2["managed"]),
@@ -436,6 +440,7 @@ cat("stage-two bandwidth / lags:", format(hac_2$bandwidth, digits = 12L), "/", h
 cat("S_HAC_2:\n")
 print(S_HAC_2, digits = 12L)
 cat("se_gamma_hat_2:", format(se_gamma_hat_2, digits = 12L), "\n")
+cat("t_gamma_hat_2:", format(t_gamma_hat_2, digits = 12L), "\n")
 cat("pricing-error standard errors:", paste(format(se_alpha_hat_2, digits = 12L), collapse = ", "), "\n")
 cat("pricing-error t-statistics:", paste(format(t_alpha_hat_2, digits = 12L), collapse = ", "), "\n")
 cat("pricing-error covariance rank:", alpha_rank_2, "\n")
