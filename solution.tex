@@ -300,38 +300,40 @@ Solving for $\hat{\gamma}$ using the same sample of 973 months from December 194
   \caption{Identity-Weighted GMM with Market and Managed-Portfolio Moments}
   \label{tab:3c-gmm}
 
-  \begin{minipage}{0.95\textwidth}
+  \begin{minipage}{0.9\textwidth}
     \centering
-    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr@{}}
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
       \toprule
-      Statistic & Value \\
+      \multicolumn{4}{@{}l}{\textbf{Panel A: Parameter and Pricing Errors}} \\
+      \addlinespace
+      Parameter / Moment & Estimate & NW SE & $t$-statistic \\
       \midrule
-      $\hat{\gamma}$ & 3.0064 \\
-      Newey--West standard error & 0.7207 \\
-      $\hat{\gamma}$ $t$-statistic & 4.1718 \\
-      Market pricing error & $-0.0038$ \\
-      Market pricing-error NW standard error & 0.0048 \\
-      Market pricing-error $t$-statistic & $-0.7934$ \\
-      Managed pricing error & 0.0019 \\
-      Managed pricing-error NW standard error & 0.0023 \\
-      Managed pricing-error $t$-statistic & 0.7934 \\
-      Joint Wald statistic & 0.6294 \\
-      Joint-test $p$-value & 0.4276 \\
-      Number of observations & 973 \\
-      Sample period & December 1940--December 2021 \\
-      Pricing-error covariance rank & 1 \\
+      $\hat{\gamma}$ & 3.0064 & 0.7207 & 4.1718 \\
+      Market pricing error & $-0.0038$ & 0.0048 & $-0.7934$ \\
+      Managed pricing error & 0.0019 & 0.0023 & 0.7934 \\
+      \midrule
+      \multicolumn{4}{@{}l}{\textbf{Panel B: Joint Wald Test}} \\
+      \addlinespace
+      Null hypothesis & Wald statistic & df & $p$-value \\
+      \midrule
+      $\alpha_{\mathrm{market}}=\alpha_{\mathrm{managed}}=0$
+        & 0.6294 & 1 & 0.4276 \\
       \bottomrule
     \end{tabular*}
 
     \par\smallskip
     {\footnotesize\raggedright
-      \textit{Note:} The Bartlett bandwidth is 23.3785.
-      Ceiling rounding gives pilot truncation $m=7$ and
-      $L=24$ lags. Lag-$\ell$ autocovariances use denominator
-      $T-\ell$; prewhitening is not used. The optimum is
-      interior. The objective grid with spacing 0.01 and
-      sensitivity checks over $[-20,20]$ and $[-50,50]$
-      yield estimates agreeing to four decimal places.
+      \textit{Note:} The sample covers December 1940--December 2021
+      ($T=973$). NW SE denotes the Newey--West standard error.
+      The joint test uses the pseudoinverse of the pricing-error
+      covariance matrix, which has numerical rank one.
+      The Bartlett bandwidth is 23.3785; ceiling rounding gives
+      pilot truncation $m=7$ and $L=24$ lags.
+      Lag-$\ell$ autocovariances use denominator $T-\ell$;
+      prewhitening is not used. The optimum is interior.
+      The objective grid with spacing 0.01 and sensitivity checks
+      over $[-20,20]$ and $[-50,50]$ yield estimates agreeing
+      to four decimal places.
       \par}
   \end{minipage}
 \end{table}
@@ -340,51 +342,12 @@ The p-value of the joint Wald test is 0.4276, which suggests that we fail to rej
 Thus, the estimated SDF is consistent in pricing both the market and managed portfolios. 
 
 \subsection*{3 (d)}
-% Required packages: booktabs, float
+I repeat the same procedure in part (c) as the first step and use $W = \hat{S}_{\mathrm{HAC}}^{-1}$ as the optimal weighting matrix in the second step.
 
 \begin{table}[H]
   \centering
   \caption{Two-Step GMM with Market and Managed-Portfolio Moments}
   \label{tab:3d-gmm}
-
-  \begin{minipage}{\textwidth}
-    \centering
-    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
-      \toprule
-      Parameter / Moment & Estimate & NW SE & $t$-statistic
-        & Wald & $p$-value \\
-      \midrule
-      $\hat{\gamma}_2$ & 2.9508 & 0.7106 & 4.1524 & --- & --- \\
-      Market pricing error & $-0.0020$ & 0.0025 & $-0.8078$
-        & --- & --- \\
-      Managed pricing error & 0.0055 & 0.0068 & 0.8078
-        & --- & --- \\
-      \midrule
-      \multicolumn{4}{l}{Joint test of pricing errors}
-        & 0.6525 & 0.4192 \\
-      \bottomrule
-    \end{tabular*}
-
-    \par\smallskip
-    {\footnotesize\raggedright
-      \textit{Note:} The sample covers December 1940--December 2021
-      ($T=973$). The pricing-error covariance matrix has numerical
-      rank one. Stage-one and stage-two Bartlett bandwidths are
-      23.3785 and 23.4192, giving $L_1=L_2=24$ after ceiling rounding.
-      Lag-$\ell$ autocovariances use denominator $T-\ell$;
-      prewhitening is not used. The stage-one eigenvalue ratio
-      is 0.0100. The optimum is interior; the objective grid with
-      spacing 0.01 and wider-bound checks yield estimates agreeing
-      to four decimal places. Dashes indicate statistics not supplied.
-      \par}
-  \end{minipage}
-\end{table}
-
-\subsection*{3 (e)}
-\begin{table}[H]
-  \centering
-  \caption{Two-Step GMM with Market and Managed-Portfolio Moments}
-  \label{tab:3e-gmm}
 
   \begin{minipage}{0.9\textwidth}
     \centering
@@ -394,9 +357,9 @@ Thus, the estimated SDF is consistent in pricing both the market and managed por
       \addlinespace
       Parameter / Moment & Estimate & NW SE & $t$-statistic \\
       \midrule
-      $\hat{\gamma}_2$ & 2.9508 & 0.7106 & --- \\
-      Market pricing error & $-0.0020$ & --- & $-0.8078$ \\
-      Managed pricing error & 0.0055 & --- & 0.8078 \\
+      $\hat{\gamma}_2$ & 2.9508 & 0.7106 & 4.1524 \\
+      Market pricing error & $-0.0020$ & 0.0025 & $-0.8078$ \\
+      Managed pricing error & 0.0055 & 0.0068 & 0.8078 \\
       \midrule
       \multicolumn{4}{@{}l}{\textbf{Panel B: Joint Wald Test}} \\
       \addlinespace
@@ -411,16 +374,23 @@ Thus, the estimated SDF is consistent in pricing both the market and managed por
     {\footnotesize\raggedright
       \textit{Note:} The sample covers December 1940--December 2021
       ($T=973$). NW SE denotes the Newey--West standard error.
-      Dashes indicate statistics not supplied.
       The joint test uses the pseudoinverse of the pricing-error
       covariance matrix, which has numerical rank one.
       Stage-one and stage-two Bartlett bandwidths are 23.3785
       and 23.4192, respectively, giving $L_1=L_2=24$ after
       ceiling rounding. Lag-$\ell$ autocovariances use denominator
-      $T-\ell$; prewhitening is not used.
+      $T-\ell$; prewhitening is not used. The stage-one eigenvalue
+      ratio is 0.0100. The optimum is interior; the objective grid
+      with spacing 0.01 and wider-bound checks yield estimates
+      agreeing to four decimal places.
       \par}
   \end{minipage}
 \end{table}
+
+Again, we fail to reject the null hypothesis that the estimated pricing errors are jointly equal to zero, 
+which suggests that the estimated SDF is consistent in pricing both the market and managed portfolios.
+\subsection*{3 (e)}
+
 
 \section*{Question 4}
 \subsection*{4 (a)}
