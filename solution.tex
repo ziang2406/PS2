@@ -271,6 +271,70 @@ Using the same sample of 1,129 months from December 1927 to December 2021, we ob
 \end{table}
 
 \subsection*{3 (c)}
+Following the same procedure in Question 2 part (e) in Problem Set 1, I estimate the out-of-sample
+forecast of $xR_{e,t+1}$, $\hat{\mathbb{E}}_{t}^{OS}[xR_e]$, and construct a managed portfolio 
+using $z_t = \hat{\mathbb{E}}_{t}^{OS}[xR_e]/ \sigma_{e}^{2}$ as a trading signal based on the dividend-price ratio. 
+Thus, given 1 parameter $\gamma$, we have 2 moment conditions:
+\begin{align*}
+    \mathbb{E}\!\left[
+      R_{w,t}^{-\gamma} \cdot xR_{w,t}
+    \right] &= 0, \\
+    \mathbb{E}\!\left[
+      R_{w,t}^{-\gamma} \cdot (z_{t-1} \cdot xR_{w,t})
+    \right] &= 0.
+\end{align*}
+
+Using an identity weighting matrix, we have the following optimization problem:
+\[
+    \hat{\gamma} = \arg\min_{\gamma} g_{T}(\gamma)'g_{T}(\gamma),
+\]      
+where $g_{T}(\gamma) = \frac{1}{T}\sum_{t=1}^{T} \epsilon(\gamma)$ and $\epsilon(\gamma) = \begin{bmatrix}
+R_{w,t}^{-\gamma} \cdot xR_{w,t} \\
+R_{w,t}^{-\gamma} \cdot (z_{t-1} \cdot xR_{w,t})
+\end{bmatrix}$.
+
+Solving for $\hat{\gamma}$ using the same sample of 973 months from December 1940 to December 2021, we obtain the following GMM estimate of risk aversion:
+
+\begin{table}[H]
+  \centering
+  \caption{Identity-Weighted GMM with Market and Managed-Portfolio Moments}
+  \label{tab:3c-gmm}
+
+  \begin{minipage}{0.95\textwidth}
+    \centering
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr@{}}
+      \toprule
+      Statistic & Value \\
+      \midrule
+      $\hat{\gamma}$ & 3.0064 \\
+      Newey--West standard error & 0.7207 \\
+      Market pricing error & $-0.0038$ \\
+      Market pricing-error $t$-statistic & $-0.7934$ \\
+      Managed pricing error & 0.0019 \\
+      Managed pricing-error $t$-statistic & 0.7934 \\
+      Joint Wald statistic & 0.6294 \\
+      Joint-test $p$-value & 0.4276 \\
+      Number of observations & 973 \\
+      Sample period & December 1940--December 2021 \\
+      Pricing-error covariance rank & 1 \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright
+      \textit{Note:} The Bartlett bandwidth is 23.3785.
+      Ceiling rounding gives pilot truncation $m=7$ and
+      $L=24$ lags. Lag-$\ell$ autocovariances use denominator
+      $T-\ell$; prewhitening is not used. The optimum is
+      interior. The objective grid with spacing 0.01 and
+      sensitivity checks over $[-20,20]$ and $[-50,50]$
+      yield estimates agreeing to four decimal places.
+      \par}
+  \end{minipage}
+\end{table}
+
+The p-value of the joint Wald test is 0.4276, which suggests that we fail to reject the null hypothesis that the estimated pricing errors are jointly equal to zero. 
+Thus, the estimated SDF is consistent in pricing both the market and managed portfolios. 
 
 \subsection*{3 (d)}
 
