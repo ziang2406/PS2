@@ -337,6 +337,45 @@ The p-value of the joint Wald test is 0.4276, which suggests that we fail to rej
 Thus, the estimated SDF is consistent in pricing both the market and managed portfolios. 
 
 \subsection*{3 (d)}
+% Required packages: booktabs, float
+
+\begin{table}[H]
+  \centering
+  \caption{Two-Step GMM with Market and Managed-Portfolio Moments}
+  \label{tab:3d-gmm}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
+      \toprule
+      Parameter / Moment & Estimate & NW SE & $t$-statistic
+        & Wald & $p$-value \\
+      \midrule
+      $\hat{\gamma}_2$ & 2.9508 & 0.7106 & --- & --- & --- \\
+      Market pricing error & $-0.0020$ & --- & $-0.8078$
+        & --- & --- \\
+      Managed pricing error & 0.0055 & --- & 0.8078
+        & --- & --- \\
+      \midrule
+      \multicolumn{4}{l}{Joint test of pricing errors}
+        & 0.6525 & 0.4192 \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright
+      \textit{Note:} The sample covers December 1940--December 2021
+      ($T=973$). The pricing-error covariance matrix has numerical
+      rank one. Stage-one and stage-two Bartlett bandwidths are
+      23.3785 and 23.4192, giving $L_1=L_2=24$ after ceiling rounding.
+      Lag-$\ell$ autocovariances use denominator $T-\ell$;
+      prewhitening is not used. The stage-one eigenvalue ratio
+      is 0.0100. The optimum is interior; the objective grid with
+      spacing 0.01 and wider-bound checks yield estimates agreeing
+      to four decimal places. Dashes indicate statistics not supplied.
+      \par}
+  \end{minipage}
+\end{table}
 
 \subsection*{3 (e)}
 
