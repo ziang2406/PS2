@@ -546,3 +546,22 @@ This file is an append-only record maintained by the project-local `$tp` skill f
 - **Type of assistance:** empirical implementation; formatting/translation.
 - **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
 
+## TP interaction `4d-52d7360` — `2026-10-26 18:29:56 -0400`
+
+- **Problem set item:** `4d`
+- **Substantive prompt (verbatim):**
+
+  ```text
+  follow my instructions in 4d
+  ```
+
+- **Purpose:** Review the Question 4d specification for policy-compliant implementation of the market-factor time-series regressions, Newey--West intercept inference, and GRS joint-alpha test.
+- **Git commit before interaction:** `52d7360007ba238ae2b511ebbbf7e7e59a7e7e8e`
+- **Assistance provided:** Reviewed the updated 4d assignment prompt, the inherited 4b/4c data-processing implementation, the existing solution section, and the course policy. Paused before implementation because the student-authored empirical-design section is empty and the reference to prior HAC conventions does not uniquely determine the regression sandwich covariance and bandwidth implementation. No 4d code, generated table, or solution result was created or modified.
+- **Files inspected:** `.agents/skills/tp/SKILL.md`; `.agents/skills/tp/references/course-ai-policy.md`; `AI_INTERACTIONS.md`; `prompt/4d.md`; `prompt/4b.md`; `prompt/4c.md`; `code/4b.R`; `code/4c.R`; `solution.tex`.
+- **Files directly modified:** `AI_INTERACTIONS.md`.
+- **Errors, omissions, or ambiguities identified:** The student-authored empirical-design section is empty. The prompt does not specify the regression estimating-function series used for HAC inference: for example, whether the factor-premium intercept uses the residual score and each portfolio regression uses the two-column score `X_t * residual_t`; whether those score columns are centered; and whether the prior sum-of-centered-columns selector is applied separately to every regression. It also does not state whether bandwidths are selected separately for all 21 regressions or held common, nor the precise OLS sandwich bread normalization and any degrees-of-freedom adjustment. Finally, the prompt requires the GRS residual covariance to be positive definite and invertible but supplies no numerical threshold or required response if the check fails. These econometric choices were not inferred.
+- **Substantive mathematical, economic, or empirical suggestions:** The missing HAC-regression and GRS matrix-check choices were identified for the student to resolve; no preferred choices were imposed.
+- **Type of assistance:** empirical implementation review.
+- **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
+
