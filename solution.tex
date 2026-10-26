@@ -556,6 +556,11 @@ Following the same GMM procedure in Question 3 part (e), we obtain the following
   \end{minipage}
 \end{table}
 \subsection*{4 (c)}
+Using the same procedure in part (b) as the first step and then using $W = \hat{S}_{\mathrm{HAC}}^{-1}$ as the optimal weighting matrix in the second step, 
+I obtain the linear SDF GMM estimate of b as follows: 
+\[
+    \hat{b} = (\hat{\operatorname{Cov}}[R_{w,t}, xR_t]' \hat{W} \hat{\operatorname{Cov}}[R_{w,t}, xR_t])^{-1} \hat{\operatorname{Cov}}[R_{w,t}, xR_t]' \hat{W} \hat{\mathbb{E}}[xR_t].
+\]
 \input{figures/4c.tex}
 
 \subsection*{4 (d)}
