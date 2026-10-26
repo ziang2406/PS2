@@ -590,3 +590,22 @@ This file is an append-only record maintained by the project-local `$tp` skill f
 - **Type of assistance:** empirical implementation; code debugging; formatting/translation.
 - **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
 
+## TP interaction `4e-c95c45c` — `2026-10-26 19:31:37 -0400`
+
+- **Problem set item:** `4e`
+- **Substantive prompt (verbatim):**
+
+  ```text
+  follow my instruction on 4e
+  ```
+
+- **Purpose:** Review the Question 4e specification for policy-compliant implementation of the Fama--MacBeth time-series and cross-sectional regressions and Newey--West inference for the average factor premium and pricing errors.
+- **Git commit before interaction:** `c95c45c518cfc5c283276baa6907ee0afc8e7e59`
+- **Assistance provided:** Reviewed the updated 4e assignment prompt, the inherited 4b/4c data-processing specifications, the 4d scalar-HAC specification, the existing 4e solution section, and the course policy. Paused before implementation because the student-authored empirical-design section remains empty and the assignment text contains unresolved empirical details. No 4e code, generated table, or solution result was created or modified.
+- **Files inspected:** `.agents/skills/tp/SKILL.md`; `.agents/skills/tp/references/course-ai-policy.md`; `AI_INTERACTIONS.md`; `prompt/4e.md`; `prompt/4b.md`; `prompt/4c.md`; `prompt/4d.md`; `solution.tex`.
+- **Files directly modified:** `AI_INTERACTIONS.md`. The student's update to `prompt/4e.md` was captured by the before snapshot but was not authored or modified by AI.
+- **Errors, omissions, or ambiguities identified:** The student-authored empirical-design section is empty. The prompt says to store the factor as a `21x1` vector even though a factor observed over the common sample would ordinarily be `Tx1`; the student must confirm the intended dimension. The instruction to follow established scalar HAC conventions does not explicitly state whether the prior bandwidth selector is applied separately to the premium series and each of the 21 pricing-error series or whether a common bandwidth is imposed, nor does it explicitly restate centering, lag-autocovariance denominator, rounding, Bartlett weighting, and prewhitening choices for these 22 intercept-only regressions. These choices were not inferred.
+- **Substantive mathematical, economic, or empirical suggestions:** The factor-dimension inconsistency and missing scalar-HAC implementation choices were identified for the student to resolve in the empirical-design section; no preferred choices were imposed.
+- **Type of assistance:** empirical implementation review.
+- **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
+
