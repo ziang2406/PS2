@@ -503,7 +503,10 @@ f\!\left(\mathbb{E}_t[R_{w,t+1}],\gamma\right)
 A disadvantage of the linearized SDF is that $a_t$ and $b_t$ are time-varying. In particular, 
 $b_t$ is a function of the conditional expectation of the market return $\mathbb{E}_t[R_{w,t+1}]$,
 which is not observable. Therefore, errors in estimating $\mathbb{E}_t[R_{w,t+1}]$ can distort $b_t$,
-thus affecting the pricing power of the linearized SDF. 
+thus affecting the pricing power of the linearized SDF. Indeed, the unconditional implication of the 
+linearized SDF with time-varying parameters is $\mathbb{E}[xR_w] = \operatorname{Cov}(b_t' F_{t+1}, xR_{w,t+1})$,
+which is not the same as the unconditional SDF coveriance pricing equation $\mathbb{E}[xR_w] = \mathbb{E}[b_t']\operatorname{Cov}(F_{t+1}, xR_{w,t+1})$.
+As a result, we cannot define $b = \mathbb{E}[b_t]$ and treat the model as a linear SDF with constant parameters, which is a key assumption in the GMM estimation procedure.
 
 \subsection*{4 (b)}
 The SDF is defined as $M_t = a - b \cdot R_{w,t}$, where $a$ and $b$ are constant parameters for simplicity. 
