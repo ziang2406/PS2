@@ -1,0 +1,42 @@
+\begin{table}[H]
+  \centering
+  \caption{Efficient Two-Step Linear-SDF GMM with 21 Pricing Moments}
+  \label{tab:4c-gmm}
+  \begin{minipage}{0.98\textwidth}
+    \centering
+    \scriptsize
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+      \toprule
+      Parameter / Moment & Estimate & NW SE & $t$-statistic \\
+      \midrule
+      $\hat{b}_2$ & 4.1665 & 0.5629 & 7.4016 \\
+      Market pricing error & -0.0914 & 0.0343 & -2.6623 \\
+      BM D1 pricing error & -0.1012 & 0.0349 & -2.8975 \\
+      BM D2 pricing error & -0.0690 & 0.0265 & -2.6006 \\
+      BM D3 pricing error & -0.0830 & 0.0288 & -2.8853 \\
+      BM D4 pricing error & -0.1022 & 0.0414 & -2.4684 \\
+      BM D5 pricing error & -0.0835 & 0.0388 & -2.1535 \\
+      BM D6 pricing error & -0.0832 & 0.0434 & -1.9182 \\
+      BM D7 pricing error & -0.1051 & 0.0473 & -2.2231 \\
+      BM D8 pricing error & -0.0949 & 0.0453 & -2.0945 \\
+      BM D9 pricing error & -0.0954 & 0.0468 & -2.0381 \\
+      BM D10 pricing error & -0.1339 & 0.0576 & -2.3229 \\
+      MOM D1 pricing error & -0.2464 & 0.0552 & -4.4662 \\
+      MOM D2 pricing error & -0.1687 & 0.0511 & -3.3020 \\
+      MOM D3 pricing error & -0.1274 & 0.0438 & -2.9070 \\
+      MOM D4 pricing error & -0.1161 & 0.0456 & -2.5476 \\
+      MOM D5 pricing error & -0.0920 & 0.0362 & -2.5374 \\
+      MOM D6 pricing error & -0.0969 & 0.0394 & -2.4627 \\
+      MOM D7 pricing error & -0.0718 & 0.0320 & -2.2474 \\
+      MOM D8 pricing error & -0.0612 & 0.0296 & -2.0652 \\
+      MOM D9 pricing error & -0.0587 & 0.0294 & -1.9928 \\
+      MOM D10 pricing error & -0.0300 & 0.0272 & -1.1053 \\
+      \midrule
+      Joint pricing-error test & 103.4546 & $df=20$ & $p=0.0000$ \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright \textit{Note:} The sample covers December 1927--December 2021 ($T=1129$), with $\overline{R}_w=1.0877$ treated as fixed. The first- and second-stage Bartlett bandwidths are 25.0249 and 22.5858, giving $L_1=26$ and $L_2=23$. Lag-$\ell$ autocovariances use denominator $T-\ell$ and no prewhitening. The first-stage HAC minimum eigenvalue is 0.0020 and its minimum/maximum eigenvalue ratio is 0.0001. The analytical denominator is 0.0067, the weighted first-order condition is -1.2630e-16, and the second-stage pricing-error covariance has numerical rank 20 under relative tolerance $10^{-10}$.\par}
+  \end{minipage}
+\end{table}
