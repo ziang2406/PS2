@@ -450,6 +450,60 @@ are jointly equal to zero. As a result, the estimated SDF is not consistent in p
 
 \section*{Question 4}
 \subsection*{4 (a)}
+The SDF = $M_t = R_{w,t+1}^{-\gamma}$ is non-linear in $\gamma$ and can be written as $f(R_{w,t+1}, \gamma)$. 
+Using first-order Taylor approximation, which gives $M_{t+1} = f(F_{t+1}, \theta) \approx f(\mathbb{E}_{t}[F], \theta) + \partial_{F} f(\mathbb{E}_{t}[F], \theta)' (F_{t+1} - \mathbb{E}_{t}[F])$,
+we can linearize the SDF as follows:
+
+\begin{align*}
+    M_{t+1}
+    &= f(R_{w,t+1},\gamma) \\
+    &\approx f\!\left(\mathbb{E}_t[R_{w,t+1}],\gamma\right)
+    + \frac{\partial f}{\partial R}
+      \!\left(\mathbb{E}_t[R_{w,t+1}],\gamma\right)
+      \left(R_{w,t+1}-\mathbb{E}_t[R_{w,t+1}]\right) 
+      \equiv M_{t+1}^{\mathrm{Linear}} \\
+    &= \left(\mathbb{E}_t[R_{w,t+1}]\right)^{-\gamma}
+    - \gamma\left(\mathbb{E}_t[R_{w,t+1}]\right)^{-\gamma-1}
+      \left(R_{w,t+1}-\mathbb{E}_t[R_{w,t+1}]\right) \\
+    &= \left(\mathbb{E}_t[R_{w,t+1}]\right)^{-\gamma}
+       \left(
+       1-\gamma
+       \frac{R_{w,t+1}-\mathbb{E}_t[R_{w,t+1}]}
+            {\mathbb{E}_t[R_{w,t+1}]}
+       \right) \\
+    &= (1+\gamma)\left(\mathbb{E}_t[R_{w,t+1}]\right)^{-\gamma}
+    - \gamma\left(\mathbb{E}_t[R_{w,t+1}]\right)^{-\gamma-1}
+      R_{w,t+1} \\
+    &= \mathbb{E}_t\!\left[M_{t+1}^{\mathrm{Linear}}\right]
+\left(
+(1+\gamma)
+-\frac{\gamma}{\mathbb{E}_t[R_{w,t+1}]}R_{w,t+1}
+\right) \\ 
+    &= \mathbb{E}_t\!\left[M_{t+1}^{\mathrm{Linear}}\right]
+\left(a_t-b_tR_{w,t+1}\right)
+\end{align*}
+where
+\[
+a_t=1+\gamma,
+\qquad
+b_t
+= 
+-\frac{
+\partial_R f\!\left(\mathbb{E}_t[R_{w,t+1}],\gamma\right)
+}{
+f\!\left(\mathbb{E}_t[R_{w,t+1}],\gamma\right)
+}
+=\frac{\gamma}{\mathbb{E}_t[R_{w,t+1}]},
+\qquad
+\mathbb{E}_t\!\left[M_{t+1}^{\mathrm{Linear}}\right]
+=
+\left(\mathbb{E}_t[R_{w,t+1}]\right)^{-\gamma}.
+\]
+
+A disadvantage of the linearized SDF is that $a_t$ and $b_t$ are time-varying. In particular, 
+$b_t$ is a function of the conditional expectation of the market return $\mathbb{E}_t[R_{w,t+1}]$,
+which is not observable. Therefore, errors in estimating $\mathbb{E}_t[R_{w,t+1}]$ can distort $b_t$,
+thus affecting the pricing power of the linearized SDF.
 
 \subsection*{4 (b)}
 
