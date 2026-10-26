@@ -1,0 +1,41 @@
+\begin{table}[H]
+  \centering
+  \caption{Fama--MacBeth Factor Premium and Pricing Errors}
+  \label{tab:4e-fama-macbeth}
+  \begin{minipage}{0.99\textwidth}
+    \centering
+    \scriptsize
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
+      \toprule
+      Quantity & Estimate & NW SE & $t$-statistic & BW & $L$ \\
+      \midrule
+      \multicolumn{6}{l}{\textbf{Panel A: Average factor premium and pricing errors}} \\
+      $\hat{\lambda}$ & 0.0843 & 0.0177 & 4.7550 & 25.1283 & 26 \\
+      Market pricing error & 0.0000 & 0.0044 & -0.0060 & 25.7333 & 26 \\
+      BM D1 pricing error & -0.0054 & 0.0110 & -0.4885 & 25.7693 & 26 \\
+      BM D2 pricing error & 0.0163 & 0.0085 & 1.9168 & 25.6926 & 26 \\
+      BM D3 pricing error & 0.0057 & 0.0062 & 0.9171 & 25.3541 & 26 \\
+      BM D4 pricing error & -0.0019 & 0.0067 & -0.2859 & 25.7263 & 26 \\
+      BM D5 pricing error & 0.0108 & 0.0070 & 1.5427 & 26.1377 & 27 \\
+      BM D6 pricing error & 0.0162 & 0.0064 & 2.5256 & 25.8624 & 26 \\
+      BM D7 pricing error & -0.0015 & 0.0077 & -0.2018 & 25.9159 & 26 \\
+      BM D8 pricing error & 0.0191 & 0.0083 & 2.3153 & 25.9063 & 26 \\
+      BM D9 pricing error & 0.0264 & 0.0095 & 2.7680 & 24.9124 & 25 \\
+      BM D10 pricing error & 0.0079 & 0.0147 & 0.5391 & 25.6897 & 26 \\
+      MOM D1 pricing error & -0.1113 & 0.0143 & -7.7854 & 24.9868 & 25 \\
+      MOM D2 pricing error & -0.0497 & 0.0091 & -5.4317 & 23.7748 & 24 \\
+      MOM D3 pricing error & -0.0277 & 0.0090 & -3.0852 & 25.9735 & 26 \\
+      MOM D4 pricing error & -0.0130 & 0.0069 & -1.8802 & 25.0079 & 26 \\
+      MOM D5 pricing error & 0.0001 & 0.0068 & 0.0137 & 25.6756 & 26 \\
+      MOM D6 pricing error & 0.0002 & 0.0054 & 0.0352 & 25.1676 & 26 \\
+      MOM D7 pricing error & 0.0164 & 0.0078 & 2.1143 & 25.9272 & 26 \\
+      MOM D8 pricing error & 0.0297 & 0.0068 & 4.3486 & 24.0188 & 25 \\
+      MOM D9 pricing error & 0.0363 & 0.0086 & 4.2240 & 24.5820 & 25 \\
+      MOM D10 pricing error & 0.0716 & 0.0135 & 5.2884 & 24.5256 & 25 \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright \textit{Note:} The sample covers December 1927--December 2021 ($T=1129$). The factor is the gross market return $F_t=R_{w,t}$, and the test assets are $xR_w$ and the 20 BM and MOM decile portfolios. First-pass betas are fixed in the monthly cross-sectional regressions through the origin. Each of the 22 intercept-only time-series regressions uses its own Newey--West bandwidth, centered series, Bartlett weights, denominator $T-\ell$, ceiling-rounded pilot and final lags, no prewhitening, and no additional degrees-of-freedom adjustment.\par}
+  \end{minipage}
+\end{table}
