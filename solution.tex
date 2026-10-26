@@ -390,7 +390,63 @@ I repeat the same procedure in part (c) as the first step and use $W = \hat{S}_{
 Again, we fail to reject the null hypothesis that the estimated pricing errors are jointly equal to zero, 
 which suggests that the estimated SDF is consistent in pricing both the market and managed portfolios.
 \subsection*{3 (e)}
-\input{figures/3e.tex}
+Since the BM and MOM portfolio returns and risk-free rates are monthly observations, I convert percentage
+returns to decimals andcalculate the annual gross return over 12 months ending at $t$
+ for each decile portfolio $p$ as follows:
+\[
+R_{p,t}^{\text{annual}} = \prod_{k=0}^{11} (1 + R_{p,t-k}).
+\]
+
+Then, I calculate the annual excess return of each decile portfolio $p$ relative to the annuallycompounded risk-free rate. 
+I estimate the GMM using 21 pricing moments: 1 for $xR_w$, 10 for the BM decile portfolios, and 10 for the MOM decile portfolios. 
+The moment function is given by $\epsilon(\gamma) = R_{w,t+1}^{-\gamma} \cdot xR_{t+1}$, where $xR_{t+1}$ is a Tx21 vector of excess returns with T = 1,129 months. 
+Following the same GMM procedure in part 9=(c), I obtain the following GMM estimate of risk aversion:
+\begin{table}[htbp]
+  \centering
+  \caption{Identity-Weighted GMM with 21 Pricing Moments}
+  \label{tab:3e-gmm}
+  \begin{minipage}{0.98\textwidth}
+    \centering
+    \scriptsize
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+      \toprule
+      Parameter / Moment & Estimate & NW SE & $t$-statistic \\
+      \midrule
+      $\hat{\gamma}$ & 1.9868 & 0.5910 & 3.3619 \\
+      Market pricing error & -0.0039 & 0.0039 & -1.0018 \\
+      BM D1 pricing error & -0.0092 & 0.0103 & -0.8927 \\
+      BM D2 pricing error & 0.0103 & 0.0072 & 1.4312 \\
+      BM D3 pricing error & 0.0024 & 0.0062 & 0.3929 \\
+      BM D4 pricing error & -0.0017 & 0.0058 & -0.2982 \\
+      BM D5 pricing error & 0.0083 & 0.0070 & 1.1973 \\
+      BM D6 pricing error & 0.0149 & 0.0082 & 1.8119 \\
+      BM D7 pricing error & -0.0009 & 0.0093 & -0.0914 \\
+      BM D8 pricing error & 0.0223 & 0.0081 & 2.7555 \\
+      BM D9 pricing error & 0.0330 & 0.0095 & 3.4950 \\
+      BM D10 pricing error & 0.0188 & 0.0146 & 1.2870 \\
+      MOM D1 pricing error & -0.1018 & 0.0128 & -7.9428 \\
+      MOM D2 pricing error & -0.0439 & 0.0086 & -5.1308 \\
+      MOM D3 pricing error & -0.0301 & 0.0094 & -3.2136 \\
+      MOM D4 pricing error & -0.0117 & 0.0071 & -1.6506 \\
+      MOM D5 pricing error & -0.0012 & 0.0068 & -0.1836 \\
+      MOM D6 pricing error & -0.0004 & 0.0048 & -0.0766 \\
+      MOM D7 pricing error & 0.0112 & 0.0070 & 1.6122 \\
+      MOM D8 pricing error & 0.0249 & 0.0057 & 4.3830 \\
+      MOM D9 pricing error & 0.0302 & 0.0081 & 3.7248 \\
+      MOM D10 pricing error & 0.0620 & 0.0130 & 4.7810 \\
+      \midrule
+      Joint pricing-error test & 201.5580 & $df=20$ & $p=0.0000$ \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright \textit{Note:} The sample covers December 1927--December 2021 ($T=1129$). The Bartlett bandwidth is 25.3665; ceiling rounding gives pilot truncation $m=7$ and $L=26$. Lag-$\ell$ autocovariances use denominator $T-\ell$ and no prewhitening. The pricing-error covariance has numerical rank 20 under relative tolerance $10^{-10}$. The optimizer is interior; the 0.01 grid and wider-bound checks passed.\par}
+  \end{minipage}
+\end{table}
+
+We observe that the p-value of the joint pricing-error test is less than 0.05, 
+which suggests that we reject the null hypothesis that the estimated pricing errors 
+are jointly equal to zero. As a result, the estimated SDF is not consistent in pricing the market and 20 decile portfolios.
 
 \section*{Question 4}
 \subsection*{4 (a)}
