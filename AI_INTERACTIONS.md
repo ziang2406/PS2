@@ -452,3 +452,22 @@ This file is an append-only record maintained by the project-local `$tp` skill f
 - **Type of assistance:** empirical implementation; formatting/translation.
 - **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
 
+## TP interaction `3e-2eb34a1` — `2026-10-26 00:46:34 -0400`
+
+- **Problem set item:** `3e`
+- **Substantive prompt (verbatim):**
+
+  ```text
+  follow my instruction in prompt/3e.md
+  ```
+
+- **Purpose:** Review the updated Question 3e specification for policy-compliant implementation of the 21-moment identity-weighted GMM estimator and its HAC inference.
+- **Git commit before interaction:** `2eb34a1d416a6c9ea3e11a0b757fc391426ceed8`
+- **Assistance provided:** Reviewed the updated assignment prompt, the inherited 3b specification, relevant source-file layouts, the existing multivariate HAC selector used in 3c/3d, and the empty 3e solution section. Paused before implementation because the student-authored empirical-design section remains empty and several econometric choices require the student's decision. No 3e code, generated table, or solution result was created or modified.
+- **Files inspected:** `.agents/skills/tp/SKILL.md`; `.agents/skills/tp/references/course-ai-policy.md`; `AI_INTERACTIONS.md`; `prompt/3e.md`; `prompt/3b.md`; `code/3c.R`; `code/3d.R`; `data/EQ Dataset.csv`; `data/BE_ME.csv`; `data/10P_MOM.csv`; `data/RF.csv`; `solution.tex`.
+- **Files directly modified:** `AI_INTERACTIONS.md`.
+- **Errors, omissions, or ambiguities identified:** The 3e student-authored empirical-design section is empty. The joint-test instruction says to use `2 - 1 = 1` degree of freedom even though the stated model has 21 moments and one parameter, which would ordinarily imply rank and degrees of freedom up to `21 - 1 = 20`; the student must specify whether the `1` is intentional or should be `20`. The prompt does not specify treatment of missing, non-finite, or Fama--French sentinel values (`-99.99` and `-999`). It also does not specify how the scalar Newey--West bandwidth selector should aggregate the 21 centered moment series; the existing 3c/3d code applies the selector to their sum, but extending that choice to 21 moments would be an econometric decision. Finally, no pseudoinverse relative tolerance or expected numerical rank is specified. These choices were not inferred.
+- **Substantive mathematical, economic, or empirical suggestions:** The apparent joint-test dimension mismatch and the missing empirical choices were identified for the student to resolve; no preferred choices were imposed.
+- **Type of assistance:** empirical implementation review; checking mathematics.
+- **Grouped minor subsequent requests:** No as of initial close; any valid later continuation will be appended below.
+
