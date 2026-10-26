@@ -503,11 +503,55 @@ f\!\left(\mathbb{E}_t[R_{w,t+1}],\gamma\right)
 A disadvantage of the linearized SDF is that $a_t$ and $b_t$ are time-varying. In particular, 
 $b_t$ is a function of the conditional expectation of the market return $\mathbb{E}_t[R_{w,t+1}]$,
 which is not observable. Therefore, errors in estimating $\mathbb{E}_t[R_{w,t+1}]$ can distort $b_t$,
-thus affecting the pricing power of the linearized SDF.
+thus affecting the pricing power of the linearized SDF. 
 
 \subsection*{4 (b)}
-\input{figures/4b.tex}
+The SDF is defined as $M_t = a - b \cdot R_{w,t}$, where $a$ and $b$ are constant parameters for simplicity. 
+With the normalization $\mathbb{E}[M_t]=1$, we have $M_t = 1 - b \cdot (R_{w,t} - \mathbb{E}[R_w])$. 
+Following the same GMM procedure in Question 3 part (e), we obtain the following GMM estimate of b: 
 
+\begin{table}[H]
+  \centering
+  \caption{Linear-SDF Identity-Weighted GMM with 21 Pricing Moments}
+  \label{tab:4b-gmm}
+  \begin{minipage}{0.98\textwidth}
+    \centering
+    \scriptsize
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+      \toprule
+      Parameter / Moment & Estimate & NW SE & $t$-statistic \\
+      \midrule
+      $\hat{b}$ & 1.9955 & 0.5850 & 3.4114 \\
+      Market pricing error & 0.0000 & 0.0046 & -0.0058 \\
+      BM D1 pricing error & -0.0054 & 0.0116 & -0.4644 \\
+      BM D2 pricing error & 0.0163 & 0.0083 & 1.9629 \\
+      BM D3 pricing error & 0.0057 & 0.0069 & 0.8177 \\
+      BM D4 pricing error & -0.0019 & 0.0061 & -0.3151 \\
+      BM D5 pricing error & 0.0108 & 0.0069 & 1.5597 \\
+      BM D6 pricing error & 0.0162 & 0.0077 & 2.0947 \\
+      BM D7 pricing error & -0.0015 & 0.0095 & -0.1627 \\
+      BM D8 pricing error & 0.0191 & 0.0088 & 2.1776 \\
+      BM D9 pricing error & 0.0264 & 0.0108 & 2.4385 \\
+      BM D10 pricing error & 0.0079 & 0.0152 & 0.5199 \\
+      MOM D1 pricing error & -0.1113 & 0.0128 & -8.7168 \\
+      MOM D2 pricing error & -0.0497 & 0.0088 & -5.6619 \\
+      MOM D3 pricing error & -0.0277 & 0.0098 & -2.8433 \\
+      MOM D4 pricing error & -0.0130 & 0.0072 & -1.8065 \\
+      MOM D5 pricing error & 0.0001 & 0.0072 & 0.0131 \\
+      MOM D6 pricing error & 0.0002 & 0.0052 & 0.0366 \\
+      MOM D7 pricing error & 0.0164 & 0.0073 & 2.2588 \\
+      MOM D8 pricing error & 0.0297 & 0.0064 & 4.6700 \\
+      MOM D9 pricing error & 0.0363 & 0.0089 & 4.0869 \\
+      MOM D10 pricing error & 0.0716 & 0.0139 & 5.1486 \\
+      \midrule
+      Joint pricing-error test & 277.0106 & $df=20$ & $p=0.0000$ \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright \textit{Note:} The sample covers December 1927--December 2021 ($T=1129$), with $\overline{R}_w=1.0877$ treated as fixed in variance calculations. The Bartlett bandwidth is 25.0249; ceiling rounding gives pilot truncation $m=7$ and $L=26$. Lag-$\ell$ autocovariances use denominator $T-\ell$ and no prewhitening. The pricing-error covariance has numerical rank 20 under relative tolerance $10^{-10}$. The optimizer is interior; the 0.01 grid and wider-bound checks passed.\par}
+  \end{minipage}
+\end{table}
 \subsection*{4 (c)}
 
 \subsection*{4 (d)}
