@@ -1,0 +1,43 @@
+\begin{table}[H]
+  \centering
+  \caption{Market-Factor Time-Series Regressions and GRS Test}
+  \label{tab:4d-regressions}
+  \begin{minipage}{0.99\textwidth}
+    \centering
+    \scriptsize
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+      \toprule
+      Quantity & Estimate & $\hat{\beta}$ & NW SE & $t$-statistic & BW & $L$ \\
+      \midrule
+      \multicolumn{7}{l}{\textbf{Panel A: Factor premium and portfolio alphas}} \\
+      $\hat{\lambda}$ & 0.0840 & 1.0000 & 0.0186 & 4.5194 & 25.6226 & 26 \\
+      BM D1 $\alpha$ & -0.0043 & 1.0367 & 0.0083 & -0.5207 & 25.5102 & 26 \\
+      BM D2 $\alpha$ & 0.0170 & 0.9258 & 0.0061 & 2.8102 & 24.9267 & 25 \\
+      BM D3 $\alpha$ & 0.0066 & 0.9587 & 0.0067 & 0.9832 & 25.8514 & 26 \\
+      BM D4 $\alpha$ & -0.0021 & 1.0995 & 0.0080 & -0.2611 & 25.4652 & 26 \\
+      BM D5 $\alpha$ & 0.0101 & 1.0383 & 0.0088 & 1.1463 & 25.7432 & 26 \\
+      BM D6 $\alpha$ & 0.0155 & 1.0956 & 0.0100 & 1.5465 & 24.5775 & 25 \\
+      BM D7 $\alpha$ & -0.0022 & 1.1412 & 0.0124 & -0.1777 & 24.3870 & 25 \\
+      BM D8 $\alpha$ & 0.0187 & 1.2522 & 0.0125 & 1.5005 & 24.7517 & 25 \\
+      BM D9 $\alpha$ & 0.0268 & 1.3289 & 0.0155 & 1.7301 & 23.5315 & 24 \\
+      BM D10 $\alpha$ & 0.0080 & 1.5512 & 0.0209 & 0.3804 & 24.3176 & 25 \\
+      MOM D1 $\alpha$ & -0.1127 & 1.4938 & 0.0148 & -7.5939 & 23.5129 & 24 \\
+      MOM D2 $\alpha$ & -0.0494 & 1.2985 & 0.0119 & -4.1556 & 21.2935 & 22 \\
+      MOM D3 $\alpha$ & -0.0283 & 1.0977 & 0.0088 & -3.2379 & 24.5560 & 25 \\
+      MOM D4 $\alpha$ & -0.0133 & 1.1320 & 0.0091 & -1.4510 & 24.1989 & 25 \\
+      MOM D5 $\alpha$ & 0.0003 & 1.0053 & 0.0072 & 0.0390 & 23.5574 & 24 \\
+      MOM D6 $\alpha$ & 0.0003 & 1.0612 & 0.0051 & 0.0666 & 24.3573 & 25 \\
+      MOM D7 $\alpha$ & 0.0161 & 0.9689 & 0.0061 & 2.6206 & 25.2610 & 26 \\
+      MOM D8 $\alpha$ & 0.0296 & 0.9962 & 0.0062 & 4.7417 & 22.9771 & 23 \\
+      MOM D9 $\alpha$ & 0.0363 & 1.0392 & 0.0088 & 4.1377 & 23.7133 & 24 \\
+      MOM D10 $\alpha$ & 0.0718 & 1.1094 & 0.0132 & 5.4356 & 23.3614 & 24 \\
+      \midrule
+      \multicolumn{7}{l}{\textbf{Panel B: GRS joint-alpha test}} \\
+      GRS statistic & 50.1190 & \multicolumn{2}{c}{$df_1=20$} & \multicolumn{2}{c}{$df_2=1108$} & $p=0.0000$ \\
+      \bottomrule
+    \end{tabular*}
+
+    \par\smallskip
+    {\footnotesize\raggedright \textit{Note:} The sample covers December 1927--December 2021 ($T=1129$) and the factor is $F_t=xR_{w,t}$. Each regression uses its own sum-of-centered-score Newey--West bandwidth, Bartlett weights, denominator $T-\ell$, ceiling-rounded pilot and final lags, and no prewhitening. OLS sandwich covariances use sample-average normalization without an additional degrees-of-freedom adjustment. The GRS residual covariance minimum eigenvalue is 0.0014 under tolerance $10^{-10}$.\par}
+  \end{minipage}
+\end{table}
