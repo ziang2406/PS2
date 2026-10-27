@@ -647,6 +647,23 @@ The GRS statistic follows an $F_{20,T-21}$ distribution.
 \end{table}
 
 \subsection*{4 (e)}
+Let $F_t=R_{w,t}$ be the tradable factor. I estimate the beta pricing model using the 
+Fama-MacBeth regressions. First, for each of the 21 test assets, I estimate $\beta_{j,t}$ from the time series regression as follows:
+\[
+xR_{j,t}=a_j+\beta_{j,t} F_t+\epsilon_{j,t}.
+\]
+With $\hat{\beta}_{j,t}$, I estimate the cross-sectional regresssion across 21 portfolios at each
+time $t$ and obtain $\hat{\lambda}_{t}$: 
+\[
+xR_{j,t}=\hat{\beta}_j\lambda_t+\alpha_{j,t}.
+\]
+Then, using intercept-only regresssions, I estimate the average premium $\lambda = \mathbb{E}[\lambda_t]$ 
+and  average pricing error $\alpha_j = \mathbb{E}[\alpha_{j,t}]$ for each portfolio j as: 
+\[
+\hat{\lambda_t}= \lambda + \epsilon_{t}^{\lambda},
+\qquad
+\hat{\alpha}_{j,t}= \alpha_j + \epsilon_{t}^{\alpha}.
+\]
 \input{figures/4e.tex}
 
 \end{document}
