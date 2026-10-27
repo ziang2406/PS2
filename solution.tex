@@ -24,6 +24,115 @@
 
 \section*{Question 1}
 
+\subsection*{1 (a)}
+Let $X$ denote the matrix of $N=3$ non-redundant asset payoffs
+($n\times s$), where
+\[
+X=
+\begin{pmatrix}
+10 & 10 & 0 \\
+20 & 10 & 10 \\
+30 & 10 & 10
+\end{pmatrix}.
+\]
+We only have a complete market if and only if $X$ has full rank and is
+invertible. Indeed, its determinant is
+\begin{align*}
+\det(X)
+&=
+10
+\begin{vmatrix}
+10 & 10 \\
+10 & 10
+\end{vmatrix}
+-10
+\begin{vmatrix}
+20 & 10 \\
+30 & 10
+\end{vmatrix}
++0 \\
+&=0-10(200-300)+0 \\
+&=1000.
+\end{align*}
+Since its determinant is nonzero, the market is complete.
+
+\subsection*{1 (b)}
+Since the law of one price holds in this economy, we have
+\[
+P_c=X^{-1}p
+=
+\begin{pmatrix}
+0 & -0.1 & 0.1 \\
+0.1 & 0.1 & -0.1 \\
+-0.1 & 0.2 & -0.1
+\end{pmatrix}
+\begin{pmatrix}
+16 \\
+6 \\
+8
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.2 \\
+0.4 \\
+0.2
+\end{pmatrix}.
+\]
+
+\subsection*{1 (c)}
+Since the law of one price holds, the price of asset $D$ in this economy is
+\[
+P=X'P_c
+=
+\begin{pmatrix}
+30 & 20 & 10
+\end{pmatrix}
+\begin{pmatrix}
+0.2 \\
+0.4 \\
+0.2
+\end{pmatrix}
+=16.
+\]
+
+\subsection*{1 (d)}
+We have
+\[
+P
+=\sum_{n=1}^{N}P_c(n)X(n)
+=\sum_{n=1}^{N}\pi(n)
+\underbrace{\frac{P_c(n)}{\pi(n)}}_{M(n)}X(n).
+\]
+As a result, the realizations of $M$ under the three states of nature are
+\begin{align*}
+M_1&=\frac{0.2}{1/4}=0.8, \\
+M_2&=\frac{0.4}{1/2}=0.8, \\
+M_3&=\frac{0.2}{1/4}=0.8.
+\end{align*}
+
+Thus, the economy satisfies no arbitrage since we observe that an asset with
+payoff greater than or equal to zero and a chance for payoff greater than zero
+has a price greater than zero. Indeed, the contingent-claim prices $P_c(n)$
+are all strictly positive, thus guaranteeing strictly positive asset prices.
+The SDF is the same across all states, which is consistent with the outcome of
+a unique and positive SDF under complete markets and no arbitrage.
+
+\subsection*{1 (e)}
+Based on the SDF equation
+\[
+P_t=\mathbb{E}_t\!\left[M_{t+1}X_{t+1}\right],
+\]
+the price of asset $D$ is
+\begin{align*}
+P_D
+&=\mathbb{E}_t[M\cdot X_D] \\
+&=\frac{1}{4}(0.8)(30)
++\frac{1}{2}(0.8)(20)
++\frac{1}{4}(0.8)(10) \\
+&=6+8+2 \\
+&=16.
+\end{align*}
+
 \section*{Question 2}
 \subsection*{2 (a)}
 Using the normalization $\mathbb{E}[M^*] = 1$, we find the stochastic discount factor $M_t^* = a - b'xR_t$ 
